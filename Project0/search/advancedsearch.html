@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Search - Advanced Search</title>
+        <style>
+        body {
+        	font-family: 'arial', sans-serif;
+            font-size: 100%;
+        }
+        header {
+  			width: 100%;
+		}
+		ul {
+  			list-style: none;
+		}
+    	#nav_bar {
+  			float: right;
+		}
+		#nav_bar li {
+  			display: inline-block;
+  			padding: 1px;
+		}
+        #gS {
+        	text-decoration:none;
+			font-size: 14px;
+        }
+        .button {
+        	color: white;
+            position:relative;
+            left:435px;
+            background-color: #4d90fe;
+            padding: 8px;
+            margin:10px;
+            border:1px solid #3079ed;
+            background-image: -moz-linear-gradient(top,#4d90fe,#4787ed);
+            <!-- Used Google's colors/gradients for the button to make it look more authentic -->
+        }
+        #inputAll {
+        	position:relative;
+            left:72px;
+            width:366px;
+        }
+        #inputExact {
+        	width:366px;
+        }
+        #inputAny {
+        	position:relative;
+            left:45px;
+            width:366px;
+        }
+        #inputNone {
+        	position:relative;
+            left:35px;
+            width:366px;
+        }
+        #inputNumRange1 {
+        	position:relative;
+            left:23px;
+            width:167.5px;
+        }
+        #sep {
+        	position:relative;
+            left:23px;
+        }
+        #inputNumRange2 {
+        	position:relative;
+            left:23px;
+            width:167.5px;
+        }
+        </style>
+    </head>
+    <body>
+    
+    	<header>
+      		<nav>
+        		<ul id="nav_bar">
+          			<li class="nav-links"><a href="index.html" id = "gS">Google Search</a></li>
+        		</ul>  
+      		</nav>  
+    	</header> 
+        
+        <form action="https://google.com/search">
+			<div class="input">
+				<label for="inputAll">all these words:</label>
+				<input type="text" id = "inputAll" name="as_q">
+			</div>
+			<br>
+			<div class="input">
+				<label for="inputExact">this exact word or phrase:</label>
+				<input type="text" id = "inputExact" name="as_epq">
+			</div>
+			<br>
+			<div class="input">
+				<label for="inputAny">any of these words:</label>
+				<input type="text" id = "inputAny" name="as_oq">
+			</div>
+			<br>
+			<div class="input">
+				<label for="inputNone">none of these words:</label>
+				<input type="text" id = "inputNone" name="as_eq">
+			</div>
+			<br>
+			<div class="input">
+				<label for="inputNumRange">numbers ranging from:</label>
+				<input type="text" id = "inputNumRange1" name="as_nlo">
+				<span class="separator" id = "sep">to</span>
+				<input type="text" id = "inputNumRange2" name="as_nhi">
+			</div>
+			<input type="submit" value="Advanced Search" class="button">
+		</form>
+
+    </body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Search - Google Search</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<style>
+	body {
+    	width:90%;
+        font-family: 'Roboto', sans-serif;
+        
+    }
+    .center {
+		position:relative;
+  		display: flex;
+  		justify-content: center;
+  		align-items: center;
+  		height: 100%;
+        top: 300px;
+		width:110%;
+	}
+    .logo {
+    	position: relative;
+    	bottom: 80px;
+        left: 400px;
+    }
+    #q {
+    	border-radius: 20px;
+        width: 500px;
+        height: 15px;
+        margin-top: -37px;
+        font-size: 14px;
+        padding: 10px;
+    }
+    #s, #f {
+    	position: relative;
+    	height: 36px;
+        width: 115px;
+        border: 1px;
+        border-style: solid;
+        border-radius: 4px;
+        margin: 11px;
+        background-color: #f8f9fa;
+        top: 60px;
+        right: 420px;
+    }
+    header {
+  		width: 110%;
+	}
+
+	ul {
+  		list-style: none;
+	}
+    #nav_bar {
+  		float: right;
+	}
+	#nav_bar li {
+  		display: inline-block;
+  		padding: 4px;
+	}
+    #imgS, #advS {
+    	text-decoration: none;
+        font-size: 14px;
+    }
+    
+	</style>
+    </head>
+    <body>
+    
+     	<header>
+      		<nav>
+        		<ul id="nav_bar">
+          			<li class="nav-links"><a href="imagesearch.html" id = "imgS">Image Search</a></li>
+          			<li class="nav-links"><a href="advancedsearch.html" id = "advS">Advanced Search</a></li>
+        		</ul>  
+      		</nav>  
+    	</header>  
+    
+    	<div class="center">
+        	<div class="logo">
+        		<img src="glogo.png" alt="Google Logo">
+        	</div>
+  			<form action="https://google.com/search">
+            	<input type="text" id = "q" name="q" >
+            	<input type="submit" id = "s" value="Google Search">
+                <input type="submit" name = "btnI" id = "f" value="I'm Feeling Lucky">
+        	</form>
+		</div>
+     
+    </body>
+</html>
