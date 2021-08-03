@@ -1,0 +1,13 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Error
+{% endblock %}
+
+{% block body %}
+
+    <h1>
+        Error - the requested page was not found
+    </h1>
+    {{ entry|safe }}
+{% endblock %}
