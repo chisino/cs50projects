@@ -1,0 +1,66 @@
+{% extends "auctions/layout.html" %}
+
+
+{% block body %}
+    <h2>Active Listings</h2>
+
+    {% for listing in listings %}
+
+        {% if not listing.closed %}
+            <div class="container border p-2 m-2">
+                <div class="row">
+                    <div class="col">
+                        <img src= "{{ listing.image }}" alt="No Image Available" style="width: 300px; height: auto">
+                    </div>
+                    <div class="col text-left">
+                        <h2 class="display-4">{{ listing.title }}</h2>
+                        <h3>{{ listing.desc }}</h4>
+                        {% if listing.category %}
+                            <h4>Category: {{ listing.category }}</h4>
+                        {% endif %}
+                        {% if listing.bids.all %}
+                            <h4>Current Bid: ${{ listing.bids.all.last.amount }}</h4>
+                        {% else %}
+                            <h4>Starting Bid: ${{ listing.startingbid }}</h4>
+                        {% endif %}
+                        <a href="{% url 'listing' listing.id %}" type="submit" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+
+        {% endif %}
+                
+    {% endfor %}
+
+    <h2>Inactive Listings</h2>
+
+    {% for listing in listings %}
+
+        {% if listing.closed %}
+
+            <div class="container border p-2 m-2">
+                <div class="row">
+                    <div class="col">
+                        <img src= "{{ listing.image }}" alt="No Image Available" style="width: 300px; height: auto">
+                    </div>
+                    <div class="col text-left">
+                        <h2 class="display-4">{{ listing.title }}</h2>
+                        <h3>{{ listing.desc }}</h4>
+                        {% if listing.category %}
+                            <h4>Category: {{ listing.category }}</h4>
+                        {% endif %}
+                        {% if listing.bids.all %}
+                            <h4>Current Bid: ${{ listing.bids.all.last.amount }}</h4>
+                        {% else %}
+                            <h4>Starting Bid: ${{ listing.startingbid }}</h4>
+                        {% endif %}
+                        <a href="{% url 'listing' listing.id %}" type="submit" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+
+        {% endif %}
+                
+    {% endfor %}
+
+{% endblock %}

@@ -1,0 +1,93 @@
+{% extends "auctions/layout.html" %}
+
+
+{% block body %}
+
+    {% if listing.closed %}
+        <div class="alert alert-info" role="alert">
+            The listing has been closed and is no longer active
+        </div>
+    {% endif %}
+
+    <form action="{% url 'listing' listing.id %}" method="post">
+        {% csrf_token %}
+
+        <button type="submit" name="button" value="Watchlist" class="btn btn-secondary btn-sm">Watchlist</button>
+
+    </form>
+
+    <h1>{{ listing.title }}</h1>
+
+    <img src= "{{ listing.image }}" alt="No Image Available" style="width:500px;height:350px;">
+
+    <h3>{{ listing.desc }}</h2>
+    {% if listing.category %}
+    <h4>Category: {{ listing.category }}</h3>
+    {% endif %}
+
+    {% if bids %}
+        <h4>Current Bid: ${{ bids.last.amount }}</h4>
+    {% else %}
+        <h4>Starting Bid: ${{ listing.startingbid }}</h4>
+    {% endif %}
+
+    {% if user.is_authenticated %} <!-- If a user is signed in, they can place a bid -->
+
+        {% if not listing.closed %}
+
+            <form action="{% url 'bid' listing.id %}" method="post">
+                {% csrf_token %}
+
+                <input type="text" id="amount" name="amount">
+
+                <input type="submit" name="button" class="btn btn-primary" value="Place Bid">
+            </form>
+
+            {% if user.username == listing.user.username %}
+                <form action="{% url 'listing' listing.id %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" name="button" class="btn btn-danger" value="Close">Close</button>
+                </form>
+            {% else %}
+                <br>
+            {% endif %}
+
+            <form action="{% url 'comment' listing.id %}" method="post">
+                {% csrf_token %}
+
+                <input type="text" id="content" name="content">
+
+                <input type="submit" name="button" class="btn btn-primary" value="Submit Comment">
+
+            </form>
+
+        {% else %}
+            <h1>Winner: {{ listing.bids.last.user.username }}</h1>
+        {% endif %}
+
+    {% endif %}
+
+    <h3>Listed by {{ listing.user.username }}</h3>
+
+    <h3>Comments</h3>
+
+    {% if listingcomments %}
+
+        {% for listingcomment in listingcomments %}
+
+            <div class="comments" style="padding: 10px;">
+                <p class="font-weight-bold">
+                {{ listingcomment.user }}
+                </p>
+                {{ listingcomment.content | linebreaks }}
+            </div>
+
+        {% endfor %}
+
+    {% endif %}
+
+    {% if message %}
+        {{ message }}
+    {% endif %}
+
+{% endblock %}
